@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc7be7583c23d65489774e27a4c3062b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Score_Txt_P1: {fileID: 0}
 --- !u!1 &355198888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,6 +1265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc7be7583c23d65489774e27a4c3062b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Score_Txt_P1: {fileID: 0}
 --- !u!4 &1398553066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2901801351629920364, guid: 8e7e5e1f7e807134fbcfc3ea1d1d5af7,
@@ -2228,7 +2230,7 @@ PrefabInstance:
     - target: {fileID: 1274938751270257957, guid: 024099a656f3eb34680003e3b2475295,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1274938751270257957, guid: 024099a656f3eb34680003e3b2475295,
         type: 3}
@@ -2277,8 +2279,13 @@ PrefabInstance:
       objectReference: {fileID: 355198889}
     - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
         type: 3}
+      propertyPath: generationAreaSize.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
+        type: 3}
       propertyPath: numberOfPrefabInstances
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollisionBalle : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Text Score_Txt_P1;
+    int score = 0;
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
+    }
     void Update()
     {
         
@@ -18,6 +18,17 @@ public class CollisionBalle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Touché par " + collision.gameObject.name);
+        
+        if (collision.gameObject.name == "Ball")
+        {
+            Debug.Log("Touché par " + collision.gameObject.name);
+            AddScore();
+        }
+    }
+
+    private void AddScore() 
+    {
+        score++;
+        Score_Txt_P1.text = "" + score;
     }
 }

@@ -7,12 +7,10 @@ public class ProceduralGenerator : MonoBehaviour
     public Vector3 generationAreaSize = new Vector3(100f, 1f, 100f);
     public Transform parentContainer;
 
-    private float absoluteGroundLevel;
+    private float absoluteGroundLevel = 5f;
 
     void Start()
     {
-        absoluteGroundLevel = transform.position.y;
-
         transform.position = new Vector3(transform.position.x, absoluteGroundLevel, transform.position.z);
 
         Generate();
@@ -22,7 +20,7 @@ public class ProceduralGenerator : MonoBehaviour
     {
         if (prefab == null || numberOfPrefabInstances <= 0 || parentContainer == null)
         {
-            Debug.LogError("Prefab, numberOfPrefabInstances, or parentContainer not set properly.");
+            Debug.LogError("Prefab, numberOfPrefabInstances, ou parentContainer n'est pas initié correctement.");
             return;
         }
 
