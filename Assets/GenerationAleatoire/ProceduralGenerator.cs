@@ -26,7 +26,6 @@ public class ProceduralGenerator : MonoBehaviour
         {
             Vector3 randomPosition = GetRandomPositionInGenerationArea();
             Quaternion randomRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
-            //Instantiate(prefab, randomPosition, randomRotation);
             Instantiate(prefab, randomPosition, randomRotation, parentContainer.transform);
         }
     }
@@ -38,15 +37,8 @@ public class ProceduralGenerator : MonoBehaviour
            0f,
            Random.Range(-generationAreaSize.z / 2, generationAreaSize.z / 2)
        );
-
-        // Optionally, you can adjust the Y coordinate based on terrain height or other criteria
-        // For example:
-        // randomPosition.y = Terrain.activeTerrain.SampleHeight(randomPosition);
-
         return transform.position + randomPosition;
     }
-
-    // Draw Gizmo to visualize the generation area
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
