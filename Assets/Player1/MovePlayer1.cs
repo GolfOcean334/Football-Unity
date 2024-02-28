@@ -7,8 +7,8 @@ using UnityEngine.UIElements;
 
 public class MovePlayer1 : MonoBehaviour
 {
-    private float speed = 200f;
-    private float rotationspeed = 100f;
+    public float speed = 200f;
+    public float rotationspeed = 100f;
 
     private Rigidbody _rigidbody;
 
