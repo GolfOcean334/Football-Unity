@@ -9,13 +9,13 @@ public class MovePlayer1 : MonoBehaviour
 {
     public float speed = 200f;
     public float rotationspeed = 100f;
-    public Vector3 positionBase = new Vector3(10, 1, 0);
+    public Vector3 positionBaseP1 = new Vector3(10, 1, 0);
 
     private Rigidbody _rigidbody;
 
     private void Start()
     {
-        PositionBaseP1(positionBase);
+        PositionBaseP1(positionBaseP1);
         _rigidbody = GetComponent<Rigidbody>();
     }
 
