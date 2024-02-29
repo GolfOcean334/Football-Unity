@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class CollisionBall : MonoBehaviour
 {
-    void Start()
+    private void OnCollisionEnter(Collision other)
     {
-
-    }
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision collisionBall)
-    {
-        
-        if (collisionBall.gameObject.name == "Ball")
+        if(other.gameObject.tag == "Bluescored")
         {
-            Debug.Log("Touché par " + collisionBall.gameObject.name);
+            scoreBlueteam.scorecount += 1;
+        }
+
+        if (other.gameObject.tag == "Redscored")
+        {
+            scoreRedteam.scorecount += 1;
+        }
+
+        if (other.gameObject.tag == "RedPlayer")
+        {
+            Debug.Log("Joueur touche la balle");
         }
     }
 }
