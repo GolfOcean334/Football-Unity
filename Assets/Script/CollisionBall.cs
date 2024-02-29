@@ -7,12 +7,14 @@ public class TriggerBall : MonoBehaviour
 {
     private PositionBall positionBall;
     private MovePlayer1 positionP1;
+    private MovePlayer1 rotationP1;
     private MovePlayer2 positionP2;
 
     void Start()
     {
         positionBall = FindObjectOfType<PositionBall>();
         positionP1 = FindObjectOfType<MovePlayer1>();
+        rotationP1 = FindObjectOfType<MovePlayer1>();
         positionP2 = FindObjectOfType<MovePlayer2>();
     }
 
@@ -23,6 +25,7 @@ public class TriggerBall : MonoBehaviour
             scoreBlueteam.scorecount += 1;
             positionBall.PositionBaseBall(positionBall.positionBase);
             positionP1.PositionBaseP1(positionP1.positionBaseP1);
+            rotationP1.RotationBaseP1();
             positionP2.PositionBaseP2(positionP2.positionBaseP2);
         }
 
@@ -31,6 +34,7 @@ public class TriggerBall : MonoBehaviour
             scoreRedteam.scorecount += 1;
             positionBall.PositionBaseBall(positionBall.positionBase);
             positionP1.PositionBaseP1(positionP1.positionBaseP1);
+            rotationP1.RotationBaseP1();
             positionP2.PositionBaseP2(positionP2.positionBaseP2);
         }
     }
