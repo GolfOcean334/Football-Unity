@@ -44,7 +44,7 @@ public class ProceduralGenerator : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, generationAreaSize);
     }
 }

@@ -9,11 +9,13 @@ public class MovePlayer2 : MonoBehaviour
 {
     public float speed = 200f;
     public float rotationspeed = 100f;
+    public Vector3 positionBase = new Vector3(-10, 1, 0);
 
     private Rigidbody _rigidbody;
 
     private void Start()
     {
+        PositionBaseP2(positionBase);
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -23,5 +25,10 @@ public class MovePlayer2 : MonoBehaviour
         float vAxis = Input.GetAxis("VerticalPlayer2");
         _rigidbody.velocity = (transform.forward * vAxis) * speed * Time.deltaTime;
         transform.Rotate((transform.up * hAxis) * rotationspeed * Time.deltaTime);
+    }
+
+    public void PositionBaseP2(Vector3 position)
+    {
+        transform .position = position;
     }
 }
