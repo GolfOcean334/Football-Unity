@@ -5,30 +5,18 @@ using UnityEngine.UI;
 
 public class CollisionBalle : MonoBehaviour
 {
-    public Text Score_Txt_P1;
-    int score = 0;
-    void Start()
+    private void OnCollisionEnter(Collision other)
     {
-
-    }
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-        if (collision.gameObject.name == "Ball")
+        if(other.gameObject.tag == "Bluescored")
         {
-            Debug.Log("Touché par " + collision.gameObject.name);
-            AddScore();
+            scoreBlueteam.scorecount += 1;
         }
-    }
 
-    private void AddScore() 
-    {
-        score++;
-        Score_Txt_P1.text = "" + score;
+        if (other.gameObject.tag == "Redscored")
+        {
+            scoreRedteam.scorecount += 1;
+        }
+
+
     }
 }

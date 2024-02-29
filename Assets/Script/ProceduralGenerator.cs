@@ -7,7 +7,7 @@ public class ProceduralGenerator : MonoBehaviour
     public Vector3 generationAreaSize = new Vector3(100f, 1f, 100f);
     public Transform parentContainer;
 
-    private float absoluteGroundLevel = 5f;
+    public float absoluteGroundLevel = 0f;
 
     void Start()
     {
