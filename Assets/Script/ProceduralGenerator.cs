@@ -5,27 +5,30 @@ public class ProceduralGenerator : MonoBehaviour
     public GameObject prefab;
     public int numberOfPrefabInstances = 200;
     public Vector3 generationAreaSize = new Vector3(100f, 1f, 100f);
-
     public Transform parentContainer;
 
-    private float absoluteGroundLevel;
+    public float absoluteGroundLevel = 0f;
 
     void Start()
     {
-        absoluteGroundLevel = gameObject.transform.position.y;
-
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, absoluteGroundLevel, gameObject.transform.position.z);
+        transform.position = new Vector3(transform.position.x, absoluteGroundLevel, transform.position.z);
 
         Generate();
     }
 
     void Generate()
     {
+        if (prefab == null || numberOfPrefabInstances <= 0 || parentContainer == null)
+        {
+            Debug.LogError("Prefab, numberOfPrefabInstances, ou parentContainer n'est pas initié correctement.");
+            return;
+        }
+
         for (int i = 0; i < numberOfPrefabInstances; i++)
         {
             Vector3 randomPosition = GetRandomPositionInGenerationArea();
             Quaternion randomRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
-            Instantiate(prefab, randomPosition, randomRotation, parentContainer.transform);
+            Instantiate(prefab, randomPosition, randomRotation, parentContainer);
         }
     }
 
@@ -38,6 +41,7 @@ public class ProceduralGenerator : MonoBehaviour
        );
         return transform.position + randomPosition;
     }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;

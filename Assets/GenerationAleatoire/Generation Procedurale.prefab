@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2193339623904310801, guid: 8fd6dc84f317b284e994cf63c01b6c4c, type: 3}
-  numberOfPrefabInstances: 50
+  numberOfPrefabInstances: 10
   generationAreaSize: {x: 120, y: 1, z: 70}
   parentContainer: {fileID: 8830886460155023125, guid: 0bf774ab1590dc44784fa0dd44344b79,
     type: 3}
