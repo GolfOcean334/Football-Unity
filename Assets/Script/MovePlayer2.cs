@@ -10,6 +10,7 @@ public class MovePlayer2 : MonoBehaviour
     public float speed = 200f;
     public float rotationspeed = 100f;
     public Vector3 positionBaseP2 = new Vector3(-10, 1, 0);
+    public Quaternion rotationBaseP2 = Quaternion.Euler(0f, 90f, 0f);
 
     private Rigidbody _rigidbody;
 
@@ -17,6 +18,7 @@ public class MovePlayer2 : MonoBehaviour
     {
         PositionBaseP2(positionBaseP2);
         _rigidbody = GetComponent<Rigidbody>();
+        RotationBaseP2();
     }
 
     private void FixedUpdate()
@@ -30,5 +32,10 @@ public class MovePlayer2 : MonoBehaviour
     public void PositionBaseP2(Vector3 position)
     {
         transform .position = position;
+    }
+
+    public void RotationBaseP2()
+    {
+        transform.rotation = rotationBaseP2;
     }
 }

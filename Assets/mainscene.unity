@@ -824,6 +824,7 @@ MonoBehaviour:
   speed: 400
   rotationspeed: 100
   positionBaseP2: {x: -10, y: 1, z: 0}
+  rotationBaseP2: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
 --- !u!4 &619658659 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3240451196942598924, guid: 8ab40061f660ffc438b6fc10249f9b4b,
