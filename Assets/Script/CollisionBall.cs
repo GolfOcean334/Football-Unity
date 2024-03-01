@@ -85,7 +85,7 @@ public class TriggerBall : MonoBehaviour
 
             float arcHeight = 0.05f;
 
-            Vector3 newVelocity = new Vector3(direction.x, Mathf.Sqrt(2 * arcHeight * throwForce), direction.z);
+            Vector3 newVelocity = new Vector3(direction.x, Mathf.Sqrt(arcHeight * (throwForce * 3)), direction.z);
             ballRigidbody.velocity = newVelocity;
             isBallTouched = true;
         }
