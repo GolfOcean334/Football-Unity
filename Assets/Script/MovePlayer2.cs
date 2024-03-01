@@ -16,9 +16,7 @@ public class MovePlayer2 : MonoBehaviour
 
     private void Start()
     {
-        PositionBaseP2(positionBaseP2);
         _rigidbody = GetComponent<Rigidbody>();
-        RotationBaseP2();
     }
 
     private void FixedUpdate()

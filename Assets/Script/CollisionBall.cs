@@ -11,6 +11,7 @@ public class TriggerBall : MonoBehaviour
     private MovePlayer2 positionP2;
     private MovePlayer2 rotationP2;
     private PositionBall rotationBall;
+    private Rigidbody ballRigidbody;
 
     void Start()
     {
@@ -20,30 +21,30 @@ public class TriggerBall : MonoBehaviour
         rotationP1 = FindObjectOfType<MovePlayer1>();
         positionP2 = FindObjectOfType<MovePlayer2>();
         rotationP2 = FindObjectOfType<MovePlayer2>();
+        ballRigidbody = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bluescored"))
+        if (other.gameObject.CompareTag("Bluescored") || other.gameObject.CompareTag("Redscored"))
         {
-            scoreBlueteam.scorecount += 1;
-            positionBall.PositionBaseBall(positionBall.positionBase);
-            rotationBall.RotationBaseBall();
-            positionP1.PositionBaseP1(positionP1.positionBaseP1);
-            rotationP1.RotationBaseP1();
-            positionP2.PositionBaseP2(positionP2.positionBaseP2);
-            rotationP2.RotationBaseP2();
-        }
+            // Increment the score
+            if (other.gameObject.CompareTag("Bluescored"))
+                scoreBlueteam.scorecount += 1;
+            else
+                scoreRedteam.scorecount += 1;
 
-        if (other.gameObject.CompareTag("Redscored"))
-        {
-            scoreRedteam.scorecount += 1;
+            // Reset the positions and rotations
             positionBall.PositionBaseBall(positionBall.positionBase);
             rotationBall.RotationBaseBall();
             positionP1.PositionBaseP1(positionP1.positionBaseP1);
             rotationP1.RotationBaseP1();
             positionP2.PositionBaseP2(positionP2.positionBaseP2);
             rotationP2.RotationBaseP2();
+
+            // Reset the Rigidbody properties to remove inertia
+            ballRigidbody.velocity = Vector3.zero;
+            ballRigidbody.angularVelocity = Vector3.zero;
         }
     }
 }
