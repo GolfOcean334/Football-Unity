@@ -1073,7 +1073,7 @@ MonoBehaviour:
   speed: 400
   rotationspeed: 100
   positionBaseP1: {x: 10, y: 1, z: 0}
-  rotationBaseP1: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+  rotationBaseP1: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
 --- !u!54 &900466583
 Rigidbody:
   m_ObjectHideFlags: 0
