@@ -26,7 +26,7 @@ public class MovePlayer2 : MonoBehaviour
         float hAxis = Input.GetAxis("HorizontalPlayer2");
         float vAxis = Input.GetAxis("VerticalPlayer2");
 
-        if (Input.GetKey(KeyCode.Keypad0))
+        if (Input.GetKey(KeyCode.RightControl))
         {
             speed = sprint;
         }

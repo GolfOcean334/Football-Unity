@@ -10,7 +10,8 @@ public class MovePlayer1 : MonoBehaviour
     public float speed = 200f;
     public float rotationspeed = 100f;
     public float sprint = 800f;
-
+    /*[SerializeField] private AnimationCurve fovCurve;
+    public Camera playerCamera;*/
 
     public Vector3 positionBaseP1 = new Vector3(10, 1, 0);
     public Quaternion rotationBaseP1 = Quaternion.Euler(0f, -90f, 0f);
@@ -20,6 +21,10 @@ public class MovePlayer1 : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        /*if (playerCamera == null)
+        {
+            playerCamera = Camera.main;
+        }*/
     }
 
     private void FixedUpdate()
@@ -30,8 +35,10 @@ public class MovePlayer1 : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftShift))
         {
             speed = sprint;
-
- 
+            /*if (playerCamera != null)
+            {
+                playerCamera.fieldOfView = Mathf.Lerp(60, 75, fovCurve.Evaluate(_rigidbody.velocity.magnitude / 8f));
+            }*/
         }
         else
         {

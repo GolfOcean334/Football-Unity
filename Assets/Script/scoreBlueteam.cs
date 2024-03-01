@@ -19,4 +19,13 @@ public class scoreBlueteam : MonoBehaviour
     {
         scoretext.text = "score: " + Mathf.Round(scorecount);
     }
+
+    public void WinBlueTeam()
+    {
+        if (scorecount >= 7)
+        {
+            scorecount = 0;
+            Debug.Log("Joueur Bleu à gagné !");
+        }
+    }
 }

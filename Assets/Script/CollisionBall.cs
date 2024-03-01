@@ -12,7 +12,10 @@ public class TriggerBall : MonoBehaviour
     private MovePlayer2 rotationP2;
     private PositionBall rotationBall;
     private Rigidbody ballRigidbody;
-    
+
+    private scoreBlueteam winBlueteam;
+    private scoreRedteam winRedteam;
+
     private bool isBallTouched = false;
 
     void Start()
@@ -24,6 +27,15 @@ public class TriggerBall : MonoBehaviour
         positionP2 = FindObjectOfType<MovePlayer2>();
         rotationP2 = FindObjectOfType<MovePlayer2>();
         ballRigidbody = GetComponent<Rigidbody>();
+
+        winBlueteam = FindObjectOfType<scoreBlueteam>();
+        winRedteam = FindObjectOfType<scoreRedteam>();
+    }
+
+    private void Update()
+    {
+        winRedteam.WinRedTeam();
+        winBlueteam.WinBlueTeam();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,6 +44,7 @@ public class TriggerBall : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Bluescored"))
                 scoreBlueteam.scorecount += 1;
+                
             else
                 scoreRedteam.scorecount += 1;
 
