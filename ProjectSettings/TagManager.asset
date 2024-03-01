@@ -11,6 +11,7 @@ TagManager:
   - Ball
   - Redscored
   - Bluescored
+  - Ground
   layers:
   - Default
   - TransparentFX
