@@ -12,6 +12,8 @@ public class TriggerBall : MonoBehaviour
     private MovePlayer2 rotationP2;
     private PositionBall rotationBall;
     private Rigidbody ballRigidbody;
+    
+    private bool isBallTouched = false;
 
     void Start()
     {
@@ -28,13 +30,11 @@ public class TriggerBall : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bluescored") || other.gameObject.CompareTag("Redscored"))
         {
-            // Increment the score
             if (other.gameObject.CompareTag("Bluescored"))
                 scoreBlueteam.scorecount += 1;
             else
                 scoreRedteam.scorecount += 1;
 
-            // Reset the positions and rotations
             positionBall.PositionBaseBall(positionBall.positionBase);
             rotationBall.RotationBaseBall();
             positionP1.PositionBaseP1(positionP1.positionBaseP1);
@@ -42,9 +42,39 @@ public class TriggerBall : MonoBehaviour
             positionP2.PositionBaseP2(positionP2.positionBaseP2);
             rotationP2.RotationBaseP2();
 
-            // Reset the Rigidbody properties to remove inertia
             ballRigidbody.velocity = Vector3.zero;
             ballRigidbody.angularVelocity = Vector3.zero;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("La balle touche le sol");
+            isBallTouched = false;
+        }
+
+        if ((collision.gameObject.CompareTag("RedPlayer") || collision.gameObject.CompareTag("BluePlayer")) && !isBallTouched)
+        {
+            float throwForce = 0f;
+
+            if (collision.gameObject.CompareTag("RedPlayer"))
+            {
+                throwForce = collision.gameObject.GetComponent<MovePlayer1>().speed;
+            }
+            else if (collision.gameObject.CompareTag("BluePlayer"))
+            {
+                throwForce = collision.gameObject.GetComponent<MovePlayer2>().speed;
+            }
+
+            Vector3 direction = collision.transform.position - transform.position;
+
+            float arcHeight = 0.05f;
+
+            Vector3 newVelocity = new Vector3(direction.x, Mathf.Sqrt(2 * arcHeight * throwForce), direction.z);
+            ballRigidbody.velocity = newVelocity;
+            isBallTouched = true;
         }
     }
 }
