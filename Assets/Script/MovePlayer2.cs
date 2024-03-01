@@ -31,7 +31,7 @@ public class MovePlayer2 : MonoBehaviour
 
     public void PositionBaseP2(Vector3 position)
     {
-        transform .position = position;
+        transform.position = position;
     }
 
     public void RotationBaseP2()
