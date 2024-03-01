@@ -9,6 +9,8 @@ public class MovePlayer2 : MonoBehaviour
 {
     public float speed = 200f;
     public float rotationspeed = 100f;
+    public float sprint = 800f;
+
     public Vector3 positionBaseP2 = new Vector3(-10, 1, 0);
     public Quaternion rotationBaseP2 = Quaternion.Euler(0f, 90f, 0f);
 
@@ -23,6 +25,16 @@ public class MovePlayer2 : MonoBehaviour
     {
         float hAxis = Input.GetAxis("HorizontalPlayer2");
         float vAxis = Input.GetAxis("VerticalPlayer2");
+
+        if (Input.GetKey(KeyCode.Keypad0))
+        {
+            speed = sprint;
+        }
+        else
+        {
+            speed = 400f;
+        }
+
         _rigidbody.velocity = (transform.forward * vAxis) * speed * Time.deltaTime;
         transform.Rotate((transform.up * hAxis) * rotationspeed * Time.deltaTime);
     }
