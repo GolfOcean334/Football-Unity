@@ -64,7 +64,6 @@ public class TriggerBall : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("La balle touche le sol");
             isBallTouched = false;
         }
 

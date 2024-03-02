@@ -10,8 +10,6 @@ public class PositionBall : MonoBehaviour
     {
         
     }
-
-    
     void Update()
     {
         
