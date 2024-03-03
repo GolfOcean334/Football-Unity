@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 public class Ball : MonoBehaviour
 {
     private PositionBall positionBall;
-    private MovePlayer1 positionP1;
-    private MovePlayer1 rotationP1;
+    private Player1Movement positionP1;
+    private Player1Movement rotationP1;
     private MovePlayer2 positionP2;
     private MovePlayer2 rotationP2;
     private PositionBall rotationBall;
@@ -24,8 +24,8 @@ public class Ball : MonoBehaviour
     {
         positionBall = FindObjectOfType<PositionBall>();
         rotationBall = FindObjectOfType<PositionBall>();
-        positionP1 = FindObjectOfType<MovePlayer1>();
-        rotationP1 = FindObjectOfType<MovePlayer1>();
+        positionP1 = FindObjectOfType<Player1Movement>();
+        rotationP1 = FindObjectOfType<Player1Movement>();
         positionP2 = FindObjectOfType<MovePlayer2>();
         rotationP2 = FindObjectOfType<MovePlayer2>();
         ballRigidbody = GetComponent<Rigidbody>();
@@ -82,7 +82,7 @@ public class Ball : MonoBehaviour
 
             if (collision.gameObject.CompareTag("RedPlayer"))
             {
-                throwForce = collision.gameObject.GetComponent<MovePlayer1>().speed;
+                throwForce = collision.gameObject.GetComponent<Player1Movement>().speed;
             }
             else if (collision.gameObject.CompareTag("BluePlayer"))
             {
