@@ -833,23 +833,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7036778533427785324}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &619658654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619658647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b8784b670a56cc4c8fb65f735ecb331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 400
-  rotationspeed: 100
-  sprint: 800
-  positionBaseP2: {x: -10, y: 1, z: 0}
-  rotationBaseP2: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
 --- !u!4 &619658659 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3240451196942598924, guid: 8ab40061f660ffc438b6fc10249f9b4b,
@@ -864,6 +847,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619658647}
   m_Enabled: 1
+--- !u!114 &619658669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619658647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09413691ea8f29f4e8aac33e7b8320d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  sprint: 10
+  currentSpeed: 0
+  jumpForce: 5
+  rotationspeed: 100
+  positionBaseP2: {x: 10, y: 1, z: 0}
+  rotationBaseP2: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
 --- !u!4 &640290228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1274938751270257957, guid: 024099a656f3eb34680003e3b2475295,
@@ -1185,26 +1187,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6407687572215474959}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &900466582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900466575}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f482c220216ca48b6de5ef1a8a7d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 400
-  rotationspeed: 100
-  sprint: 800
-  jumpForce: 5
-  gravityMultiplier: 100
-  positionBaseP1: {x: 10, y: 1, z: 0}
-  rotationBaseP1: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
-  playerCamera: {fileID: 1495882355}
 --- !u!54 &900466583
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1251,7 +1233,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  sprint: 10
+  currentSpeed: 0
   jumpForce: 5
+  rotationspeed: 100
+  positionBaseP1: {x: 10, y: 1, z: 0}
+  rotationBaseP1: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
 --- !u!1 &916133909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1480,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419083583650726184, guid: a2235bfc1df723848b6e70b7b7a6f4c1,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7067623091076492201, guid: a2235bfc1df723848b6e70b7b7a6f4c1,
         type: 3}
@@ -2527,12 +2519,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'score: 0'
---- !u!20 &1495882355 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 824445801652203538, guid: efabfcdde4e96684f9dab414424074dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 6407687572215474959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1504818674
 GameObject:
   m_ObjectHideFlags: 0
@@ -3911,10 +3897,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3401668102712056156, guid: efabfcdde4e96684f9dab414424074dd,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 900466582}
-    - targetCorrespondingSourceObject: {fileID: 3401668102712056156, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 900466591}
   m_SourcePrefab: {fileID: 100100000, guid: efabfcdde4e96684f9dab414424074dd, type: 3}
 --- !u!1001 &7036778533427785324
@@ -4000,6 +3982,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 5475431774060521368, guid: 8ab40061f660ffc438b6fc10249f9b4b,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6215314745869335220, guid: 8ab40061f660ffc438b6fc10249f9b4b,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -4077,11 +4064,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3882923464252029458, guid: 8ab40061f660ffc438b6fc10249f9b4b,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 619658654}
+      addedObject: {fileID: 619658664}
     - targetCorrespondingSourceObject: {fileID: 3882923464252029458, guid: 8ab40061f660ffc438b6fc10249f9b4b,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 619658664}
+      addedObject: {fileID: 619658669}
   m_SourcePrefab: {fileID: 100100000, guid: 8ab40061f660ffc438b6fc10249f9b4b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

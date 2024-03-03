@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class Player1Movement : MonoBehaviour
+public class Player2Movement : MonoBehaviour
 {
     public float speed = 5.0f;
     public float sprint = 10.0f;
@@ -15,8 +15,8 @@ public class Player1Movement : MonoBehaviour
     private Rigidbody playerRb;
     bool isGrounded = false;
 
-    public Vector3 positionBaseP1 = new Vector3(10, 1, 0);
-    public Quaternion rotationBaseP1 = Quaternion.Euler(0f, -90f, 0f);
+    public Vector3 positionBaseP2 = new Vector3(10, 1, 0);
+    public Quaternion rotationBaseP2 = Quaternion.Euler(0f, -90f, 0f);
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -25,18 +25,18 @@ public class Player1Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("HorizontalPlayer1");
-        forwardInput = Input.GetAxis("VerticalPlayer1");
+        horizontalInput = Input.GetAxis("HorizontalPlayer2");
+        forwardInput = Input.GetAxis("VerticalPlayer2");
 
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime * forwardInput);
         transform.Rotate((transform.up * horizontalInput) * rotationspeed * Time.deltaTime);
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded && Input.GetKeyDown(KeyCode.RightControl))
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.Keypad0))
         {
             Sprint();
         }
@@ -65,13 +65,13 @@ public class Player1Movement : MonoBehaviour
         }
     }
 
-    public void PositionBaseP1(Vector3 position)
+    public void PositionBaseP2(Vector3 position)
     {
         transform.position = position;
     }
 
-    public void RotationBaseP1()
+    public void RotationBaseP2()
     {
-        transform.rotation = rotationBaseP1;
+        transform.rotation = rotationBaseP2;
     }
 }
