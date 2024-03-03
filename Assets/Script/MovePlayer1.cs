@@ -17,6 +17,8 @@ public class MovePlayer1 : MonoBehaviour
     private Rigidbody _rigidbody;
     bool isGrounded = false;
 
+    public Camera playerCamera;
+
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -31,6 +33,12 @@ public class MovePlayer1 : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             speed = sprint;
+
+            if (playerCamera != null)
+            {
+                float cameraMoveSpeed = 0.01f * speed * Time.deltaTime;
+                playerCamera.transform.Translate(Vector3.back * cameraMoveSpeed);
+            }
         }
         else
         {
@@ -70,7 +78,7 @@ public class MovePlayer1 : MonoBehaviour
     {
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            _rigidbody.AddForce(Vector3.up * jumpForce * 10f, ForceMode.Force);
             Debug.Log("Jump");
         }
     }

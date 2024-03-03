@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TriggerBall : MonoBehaviour
+public class Ball : MonoBehaviour
 {
     private PositionBall positionBall;
     private MovePlayer1 positionP1;
@@ -15,6 +15,8 @@ public class TriggerBall : MonoBehaviour
 
     private scoreBlueteam winBlueteam;
     private scoreRedteam winRedteam;
+
+    private AudioSource audioSource;
 
     private bool isBallTouched = false;
 
@@ -30,6 +32,8 @@ public class TriggerBall : MonoBehaviour
 
         winBlueteam = FindObjectOfType<scoreBlueteam>();
         winRedteam = FindObjectOfType<scoreRedteam>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -57,6 +61,11 @@ public class TriggerBall : MonoBehaviour
 
             ballRigidbody.velocity = Vector3.zero;
             ballRigidbody.angularVelocity = Vector3.zero;
+
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
         }
     }
 
