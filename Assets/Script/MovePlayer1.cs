@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody))]
 public class MovePlayer1 : MonoBehaviour
@@ -9,13 +8,14 @@ public class MovePlayer1 : MonoBehaviour
     public float speed = 200f;
     public float rotationspeed = 100f;
     public float sprint = 800f;
-    public float jumpForce = 50f;
+    public float jumpForce = 5f;
     public float gravityMultiplier = 100f;
 
     public Vector3 positionBaseP1 = new Vector3(10, 1, 0);
     public Quaternion rotationBaseP1 = Quaternion.Euler(0f, -90f, 0f);
 
     private Rigidbody _rigidbody;
+    bool isGrounded = false;
 
     private void Start()
     {
@@ -40,8 +40,12 @@ public class MovePlayer1 : MonoBehaviour
         _rigidbody.velocity = (transform.forward * vAxis) * speed * Time.deltaTime;
         transform.Rotate((transform.up * hAxis) * rotationspeed * Time.deltaTime);
 
-        // Appliquer la gravité avec le coefficient approprié
         _rigidbody.AddForce(Vector3.down * gravityMultiplier * _rigidbody.mass);
+    }
+
+    private void Update()
+    {
+        Jump();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -49,11 +53,25 @@ public class MovePlayer1 : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Touche le sol");
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                _rigidbody.AddForce(Vector3.up * jumpForce * 100f);
-                Debug.Log("Je saute");
-            }
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Touche le sol");
+            isGrounded = false;
+        }
+    }
+
+    private void Jump()
+    {
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            Debug.Log("Jump");
         }
     }
 
