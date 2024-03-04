@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5475431774060521368}
   - component: {fileID: 6172945106593780562}
   - component: {fileID: 4833333879214308585}
+  - component: {fileID: -8081805635288779089}
   m_Layer: 0
   m_Name: player2
   m_TagString: BluePlayer
@@ -146,6 +147,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3882923464252029458}
   m_Enabled: 1
+--- !u!114 &-8081805635288779089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882923464252029458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09413691ea8f29f4e8aac33e7b8320d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  sprint: 10
+  currentSpeed: 0
+  jumpForce: 250
+  rotationspeed: 100
+  positionBaseP2: {x: 10, y: 1, z: 0}
+  rotationBaseP2: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
 --- !u!1 &4276573073192995259
 GameObject:
   m_ObjectHideFlags: 0
