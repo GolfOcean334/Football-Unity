@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3769371699676452914}
   - component: {fileID: 359554711808971070}
   - component: {fileID: 6062420495421871560}
-  - component: {fileID: 7138615467381072207}
   m_Layer: 0
   m_Name: player1
   m_TagString: RedPlayer
@@ -158,26 +157,6 @@ MonoBehaviour:
   rotationspeed: 100
   positionBaseP1: {x: 10, y: 1, z: 0}
   rotationBaseP1: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
---- !u!114 &7138615467381072207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3401668102712056156}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f482c220216ca48b6de5ef1a8a7d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 200
-  rotationspeed: 100
-  sprint: 800
-  jumpForce: 5
-  gravityMultiplier: 100
-  positionBaseP1: {x: 10, y: 1, z: 0}
-  rotationBaseP1: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
-  playerCamera: {fileID: 0}
 --- !u!1 &6189987326793747084
 GameObject:
   m_ObjectHideFlags: 0

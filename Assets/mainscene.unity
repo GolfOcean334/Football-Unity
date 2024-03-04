@@ -3427,75 +3427,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1288134659}
     m_Modifications:
-    - target: {fileID: 824445801652203538, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 824445801652203538, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1026856866034010259, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1026856866034010259, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1026856866034010259, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1026856866034010259, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9902681
-      objectReference: {fileID: 0}
-    - target: {fileID: 1026856866034010259, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.13917309
-      objectReference: {fileID: 0}
-    - target: {fileID: 1026856866034010259, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1026856866034010259, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1026856866034010259, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3275545844585245707, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_Cameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3275545844585245707, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_Cameras.Array.data[0]
-      value: 
-      objectReference: {fileID: 1921891594}
     - target: {fileID: 3401668102712056156, guid: efabfcdde4e96684f9dab414424074dd,
         type: 3}
       propertyPath: m_Name
       value: player1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3401668102712056156, guid: efabfcdde4e96684f9dab414424074dd,
-        type: 3}
-      propertyPath: m_TagString
-      value: RedPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 7265366132795495751, guid: efabfcdde4e96684f9dab414424074dd,
         type: 3}
