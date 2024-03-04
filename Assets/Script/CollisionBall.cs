@@ -89,13 +89,14 @@ public class Ball : MonoBehaviour
                 throwForce = collision.gameObject.GetComponent<Player2Movement>().currentSpeed;
             }
 
-            Vector3 direction = collision.transform.position - transform.position;
+            Vector3 direction = collision.transform.forward;
 
-            float arcHeight = 0.05f;
+            float arcHeight = 0.4f;
+            float multiplicator = 10f;
 
-            Vector3 newVelocity = new Vector3(direction.x, Mathf.Sqrt(arcHeight * (throwForce * 3)), direction.z);
+            Vector3 forceDirection = new Vector3((direction.x * multiplicator), Mathf.Sqrt(arcHeight * (throwForce * 3) * multiplicator), (direction.z * multiplicator));
 
-            ballRigidbody.velocity = newVelocity;
+            ballRigidbody.AddForce(forceDirection, ForceMode.Impulse);
 
             isBallTouched = true;
         }
