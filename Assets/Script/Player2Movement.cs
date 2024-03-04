@@ -16,8 +16,8 @@ public class Player2Movement : MonoBehaviour
     bool isGrounded = false;
 
 
-    public Vector3 positionBaseP2 = new Vector3(10, 1, 0);
-    public Quaternion rotationBaseP2 = Quaternion.Euler(0f, -90f, 0f);
+    public Vector3 positionBaseP2 = new Vector3(-10, 1, 0);
+    public Quaternion rotationBaseP2 = Quaternion.Euler(0f, 90f, 0f);
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
