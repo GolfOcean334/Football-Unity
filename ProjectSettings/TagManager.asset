@@ -12,6 +12,7 @@ TagManager:
   - Redscored
   - Bluescored
   - Ground
+  - Wall
   layers:
   - Default
   - TransparentFX
