@@ -15,6 +15,7 @@ public class Player2Movement : MonoBehaviour
     private Rigidbody playerRb;
     bool isGrounded = false;
 
+
     public Vector3 positionBaseP2 = new Vector3(10, 1, 0);
     public Quaternion rotationBaseP2 = Quaternion.Euler(0f, -90f, 0f);
     void Start()
@@ -36,8 +37,9 @@ public class Player2Movement : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        if (Input.GetKey(KeyCode.Keypad0))
+        if (Input.GetKey(KeyCode.Keypad0) && StaminaBarPlayer2.P2.currentStamina > 1)
         {
+            StaminaBarPlayer2.P2.UseStamina(0.1f);
             Sprint();
         }
         else

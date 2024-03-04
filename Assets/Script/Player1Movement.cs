@@ -36,9 +36,9 @@ public class Player1Movement : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && StaminaBarPlayer1.P1.currentStamina > 1)
         {
-            StaminaBar.Instance.UseStamina(15);
+            StaminaBarPlayer1.P1.UseStamina(0.1f);
             Sprint();
         }
         else

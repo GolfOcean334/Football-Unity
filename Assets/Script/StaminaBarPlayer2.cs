@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StaminaBar : MonoBehaviour
+public class StaminaBarPlayer2 : MonoBehaviour
 {
 
     public Slider staminaBar;
 
-    private int maxStamina = 100;
-    private int currentStamina;
+    private float maxStamina = 100;
+    public float currentStamina;
 
     private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
     private Coroutine regen;
 
-    public static StaminaBar Instance;
+    public static StaminaBarPlayer2 P2;
 
     private void Awake()
     {
-        Instance = this;
+        P2 = this;
     }
 
     // Start is called before the first frame update
@@ -32,14 +32,14 @@ public class StaminaBar : MonoBehaviour
 
     }
 
-    public void UseStamina(int amount)
+    public void UseStamina(float amount)
     {
-        if(currentStamina - amount >= 0)
+        if (currentStamina - amount >= 0)
         {
-            currentStamina -=amount;
+            currentStamina -= amount;
             staminaBar.value = currentStamina;
 
-            if(regen != null )
+            if (regen != null)
             {
                 StopCoroutine(regen);
             }
@@ -52,7 +52,7 @@ public class StaminaBar : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        while(currentStamina < maxStamina) 
+        while (currentStamina < maxStamina)
         {
             currentStamina += maxStamina / 100;
             staminaBar.value = currentStamina;
