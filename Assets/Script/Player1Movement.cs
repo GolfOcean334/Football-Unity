@@ -8,7 +8,7 @@ public class Player1Movement : MonoBehaviour
     public float speed = 5.0f;
     public float sprint = 10.0f;
     public float currentSpeed;
-    public float jumpForce = 5.0f;
+    public float jumpForce = 250f;
     public float rotationspeed = 100.0f;
     private float horizontalInput;
     private float forwardInput;

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5475431774060521368}
   - component: {fileID: 6172945106593780562}
   - component: {fileID: 4833333879214308585}
-  - component: {fileID: 6451067861246865521}
   m_Layer: 0
   m_Name: player2
   m_TagString: BluePlayer
@@ -30,15 +29,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3882923464252029458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.99607897, z: 0, w: 0.08846849}
-  m_LocalPosition: {x: 0.23, y: 3.8146, z: 1.6}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -10.280003, y: -1.7599987, z: -0.000026464462}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7467868717096084525}
   - {fileID: 3216198336138402757}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 169.849, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &5427413727556987541
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -147,25 +146,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3882923464252029458}
   m_Enabled: 1
---- !u!114 &6451067861246865521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3882923464252029458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09413691ea8f29f4e8aac33e7b8320d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  sprint: 10
-  currentSpeed: 0
-  jumpForce: 5
-  rotationspeed: 100
-  positionBaseP2: {x: 10, y: 1, z: 0}
-  rotationBaseP2: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
 --- !u!1 &4276573073192995259
 GameObject:
   m_ObjectHideFlags: 0
