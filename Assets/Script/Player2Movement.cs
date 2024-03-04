@@ -46,6 +46,9 @@ public class Player2Movement : MonoBehaviour
 
     private void Sprint()
     {
+
+
+
         currentSpeed = sprint;
     }
 
