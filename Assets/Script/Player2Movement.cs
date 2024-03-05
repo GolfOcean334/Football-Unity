@@ -33,10 +33,10 @@ public class Player2Movement : MonoBehaviour
 
         if (isGrounded && Input.GetKeyDown(KeyCode.RightControl))
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            Jump();
         }
 
-        if (Input.GetKey(KeyCode.Keypad0) && StaminaBarPlayer2.P2.currentStamina > 1)
+        if (Input.GetKey(KeyCode.Keypad0) && StaminaBarPlayer2.P2.currentStamina > 1 && Input.GetKey(KeyCode.UpArrow))
         {
             StaminaBarPlayer2.P2.UseStamina(0.1f);
             Sprint();
@@ -47,10 +47,12 @@ public class Player2Movement : MonoBehaviour
 
     private void Sprint()
     {
-
-
-
         currentSpeed = sprint;
+    }
+
+    private void Jump()
+    {
+        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)

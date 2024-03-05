@@ -13,6 +13,9 @@ public class Ball : MonoBehaviour
     private PositionBall rotationBall;
     private Rigidbody ballRigidbody;
 
+    private StaminaBarPlayer1 staminaP1;
+    private StaminaBarPlayer2 staminaP2;
+
     private scoreBlueteam winBlueteam;
     private scoreRedteam winRedteam;
 
@@ -29,11 +32,24 @@ public class Ball : MonoBehaviour
         positionP2 = FindObjectOfType<Player2Movement>();
         rotationP2 = FindObjectOfType<Player2Movement>();
         ballRigidbody = GetComponent<Rigidbody>();
-
+        staminaP1 = FindObjectOfType<StaminaBarPlayer1>();
+        staminaP2 = FindObjectOfType<StaminaBarPlayer2>();
         winBlueteam = FindObjectOfType<scoreBlueteam>();
         winRedteam = FindObjectOfType<scoreRedteam>();
-
         audioSource = GetComponent<AudioSource>();
+
+        positionBall.PositionBaseBall(positionBall.positionBase);
+        rotationBall.RotationBaseBall();
+        positionP1.PositionBaseP1(positionP1.positionBaseP1);
+        rotationP1.RotationBaseP1();
+        positionP2.PositionBaseP2(positionP2.positionBaseP2);
+        rotationP2.RotationBaseP2();
+
+        staminaP1.GetStaminaP1();
+        staminaP2.GetStaminaP2();
+
+        ballRigidbody.velocity = Vector3.zero;
+        ballRigidbody.angularVelocity = Vector3.zero;
     }
 
     private void Update()
@@ -58,6 +74,9 @@ public class Ball : MonoBehaviour
             rotationP1.RotationBaseP1();
             positionP2.PositionBaseP2(positionP2.positionBaseP2);
             rotationP2.RotationBaseP2();
+
+            staminaP1.GetStaminaP1();
+            staminaP2.GetStaminaP2();
 
             ballRigidbody.velocity = Vector3.zero;
             ballRigidbody.angularVelocity = Vector3.zero;
@@ -91,10 +110,10 @@ public class Ball : MonoBehaviour
 
             Vector3 direction = collision.transform.forward;
 
-            float arcHeight = 0.4f;
+            float arcHeight = 0.5f;
             float multiplicator = 10f;
 
-            Vector3 forceDirection = new Vector3((direction.x * multiplicator), Mathf.Sqrt(arcHeight * (throwForce * 3) * multiplicator), (direction.z * multiplicator));
+            Vector3 forceDirection = new Vector3((direction.x * multiplicator), Mathf.Sqrt(arcHeight * (throwForce * 3) * (multiplicator / 2)), (direction.z * multiplicator));
 
             ballRigidbody.AddForce(forceDirection, ForceMode.Impulse);
 

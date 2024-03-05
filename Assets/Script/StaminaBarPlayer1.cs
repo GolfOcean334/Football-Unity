@@ -20,16 +20,17 @@ public class StaminaBarPlayer1 : MonoBehaviour
     {
         P1 = this;
     }
-
-    // Start is called before the first frame update
     void Start()
+    {
+        GetStaminaP1();
+    }
+
+    public void GetStaminaP1()
     {
         currentStamina = maxStamina;
 
         staminaBar.maxValue = maxStamina;
         staminaBar.value = maxStamina;
-
-
     }
 
     public void UseStamina(float amount)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -32,10 +33,10 @@ public class Player1Movement : MonoBehaviour
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            Jump();
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && StaminaBarPlayer1.P1.currentStamina > 1)
+        if (Input.GetKey(KeyCode.LeftShift) && StaminaBarPlayer1.P1.currentStamina > 1 && Input.GetKey(KeyCode.W))
         {
             StaminaBarPlayer1.P1.UseStamina(0.1f);
             Sprint();
@@ -47,6 +48,11 @@ public class Player1Movement : MonoBehaviour
     private void Sprint()
     {
         currentSpeed = sprint;
+    }
+
+    private void Jump()
+    {
+        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
