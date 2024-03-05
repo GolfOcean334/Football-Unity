@@ -42,7 +42,20 @@ public class Player1Movement : MonoBehaviour
             Sprint();
         }
         else
+        {
             currentSpeed = speed;
+        }
+
+        if(Input.GetKey(KeyCode.Space) && FuelBarP1.P1.currentFuel > 1)
+        {
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            FuelBarP1.P1.UseFuel(0.1f);
+
+            if(playerRb.velocity.magnitude > 1)
+            {
+                playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, 1);
+            }
+        }
     }
 
     private void Sprint()
