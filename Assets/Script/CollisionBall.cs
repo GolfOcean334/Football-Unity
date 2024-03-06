@@ -23,6 +23,8 @@ public class Ball : MonoBehaviour
 
     private bool isBallTouched = false;
 
+    public ParticleSystem ballParticles;
+
     void Start()
     {
         positionBall = FindObjectOfType<PositionBall>();
@@ -50,6 +52,12 @@ public class Ball : MonoBehaviour
 
         ballRigidbody.velocity = Vector3.zero;
         ballRigidbody.angularVelocity = Vector3.zero;
+
+        ballParticles = GetComponentInChildren<ParticleSystem>(); // Assurez-vous d'avoir un Particle System attaché à la balle ou à un de ses enfants
+        if (ballParticles != null)
+        {
+            ballParticles.Stop(); // Assurez-vous que le système de particules est initialisé en mode arrêté
+        }
     }
 
     private void Update()
@@ -93,6 +101,10 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isBallTouched = false;
+            if (ballParticles != null)
+            {
+                ballParticles.Stop();
+            }
         }
 
         if ((collision.gameObject.CompareTag("RedPlayer") || collision.gameObject.CompareTag("BluePlayer")) && !isBallTouched)
@@ -116,6 +128,13 @@ public class Ball : MonoBehaviour
             Vector3 forceDirection = new Vector3((direction.x * multiplicator), Mathf.Sqrt(arcHeight * (throwForce * 3) * (multiplicator / 2)), (direction.z * multiplicator));
 
             ballRigidbody.AddForce(forceDirection, ForceMode.Impulse);
+
+            isBallTouched = true;
+
+            if (ballParticles != null)
+            {
+                ballParticles.Play();
+            }
 
             isBallTouched = true;
         }
