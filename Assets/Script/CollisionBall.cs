@@ -50,10 +50,10 @@ public class Ball : MonoBehaviour
         ballRigidbody.velocity = Vector3.zero;
         ballRigidbody.angularVelocity = Vector3.zero;
 
-        ballParticles = GetComponentInChildren<ParticleSystem>(); // Assurez-vous d'avoir un Particle System attaché à la balle ou à un de ses enfants
+        ballParticles = GetComponentInChildren<ParticleSystem>();
         if (ballParticles != null)
         {
-            ballParticles.Stop(); // Assurez-vous que le système de particules est initialisé en mode arrêté
+            ballParticles.Stop();
         }
     }
 
@@ -130,11 +130,17 @@ public class Ball : MonoBehaviour
 
             if (ballParticles != null)
             {
-                //ballParticles.velocityOverLifetime = Vector3(direction.x, 0, direction.y);
+                var velocityOverLifetime = ballParticles.velocityOverLifetime;
+                velocityOverLifetime.x = -direction.x;
+                velocityOverLifetime.y = 0;
+                velocityOverLifetime.z = -direction.z;
+
                 ballParticles.Play();
             }
 
             isBallTouched = true;
+
+
         }
     }
 }
