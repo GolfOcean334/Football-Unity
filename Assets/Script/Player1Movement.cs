@@ -14,7 +14,8 @@ public class Player1Movement : MonoBehaviour
     private float horizontalInput;
     private float forwardInput;
     private Rigidbody playerRb;
-    bool isGrounded = false;
+    private bool isGrounded = false;
+    private bool isJumping = false;
 
     public Vector3 positionBaseP1 = new Vector3(10, 1, 0);
     public Quaternion rotationBaseP1 = Quaternion.Euler(0f, -90f, 0f);
@@ -33,7 +34,18 @@ public class Player1Movement : MonoBehaviour
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
+            isJumping = true;
             Jump();
+        }
+
+        if (isJumping && Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
+        }
+
+        if (Input.GetKey(KeyCode.Space) && FuelBarP1.P1.currentFuel > 1 && isJumping)
+        {
+            JetPack();
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && StaminaBarPlayer1.P1.currentStamina > 1 && Input.GetKey(KeyCode.W))
@@ -66,6 +78,17 @@ public class Player1Movement : MonoBehaviour
     private void Jump()
     {
         playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void JetPack()
+    {
+        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Force);
+        FuelBarP1.P1.UseFuel(0.1f);
+
+        if (playerRb.velocity.magnitude > 1)
+        {
+            playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, 1);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
