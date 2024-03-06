@@ -133,6 +133,7 @@ public class Ball : MonoBehaviour
 
             if (ballParticles != null)
             {
+                //ballParticles.velocityOverLifetime = Vector3(direction.x, 0, direction.y);
                 ballParticles.Play();
             }
 
