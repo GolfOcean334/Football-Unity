@@ -11,6 +11,12 @@ public class Player1Movement : MonoBehaviour
     public float currentSpeed;
     public float jumpForce = 250f;
     public float rotationspeed = 100.0f;
+
+    public float jetpackAcceleration = 10f;
+    public float maxJetpackForce = 100f;
+    private float currentJetpackForce = 0f;
+    private float maxVerticalVelocity = 5f;
+
     private float horizontalInput;
     private float forwardInput;
     private Rigidbody playerRb;
@@ -43,11 +49,6 @@ public class Player1Movement : MonoBehaviour
             isJumping = false;
         }
 
-        if (Input.GetKey(KeyCode.Space) && FuelBarP1.P1.currentFuel > 1 && isJumping)
-        {
-            JetPack();
-        }
-
         if (Input.GetKey(KeyCode.LeftShift) && StaminaBarPlayer1.P1.currentStamina > 1 && Input.GetKey(KeyCode.W))
         {
             StaminaBarPlayer1.P1.UseStamina(0.1f);
@@ -60,14 +61,26 @@ public class Player1Movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && FuelBarP1.P1.currentFuel > 1)
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            // Increment the jetpack force up to the maximum value
+            if (currentJetpackForce < maxJetpackForce)
+            {
+                currentJetpackForce += jetpackAcceleration * Time.deltaTime;
+                currentJetpackForce = Mathf.Clamp(currentJetpackForce, 0f, maxJetpackForce);
+            }
+
+            // Apply the jetpack force smoothly
+            playerRb.AddForce(Vector3.up * currentJetpackForce, ForceMode.Acceleration);
             FuelBarP1.P1.UseFuel(0.1f);
 
-            if (playerRb.velocity.magnitude > 1)
-            {
-                playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, 1);
-            }
+            // Clamp the velocity to limit the upward speed
+            playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, maxVerticalVelocity);
         }
+        else
+        {
+            // Reset the current jetpack force when not using the jetpack
+            currentJetpackForce = 0f;
+        }
+
     }
 
     private void Sprint()
@@ -78,17 +91,6 @@ public class Player1Movement : MonoBehaviour
     private void Jump()
     {
         playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    }
-
-    private void JetPack()
-    {
-        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Force);
-        FuelBarP1.P1.UseFuel(0.1f);
-
-        if (playerRb.velocity.magnitude > 1)
-        {
-            playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, 1);
-        }
     }
 
     private void OnCollisionEnter(Collision collision)

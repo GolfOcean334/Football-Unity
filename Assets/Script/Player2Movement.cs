@@ -9,6 +9,12 @@ public class Player2Movement : MonoBehaviour
     public float sprint = 10.0f;
     public float currentSpeed;
     public float jumpForce = 250f;
+
+    public float jetpackAcceleration = 10f;
+    public float maxJetpackForce = 100f;
+    private float currentJetpackForce = 0f;
+    private float maxVerticalVelocity = 5f;
+
     public float rotationspeed = 100.0f;
     private float horizontalInput;
     private float forwardInput;
@@ -43,6 +49,28 @@ public class Player2Movement : MonoBehaviour
         }
         else
             currentSpeed = speed;
+
+        if (Input.GetKey(KeyCode.RightControl) && FuelBarP2.P2.currentFuel > 1)
+        {
+            // Increment the jetpack force up to the maximum value
+            if (currentJetpackForce < maxJetpackForce)
+            {
+                currentJetpackForce += jetpackAcceleration * Time.deltaTime;
+                currentJetpackForce = Mathf.Clamp(currentJetpackForce, 0f, maxJetpackForce);
+            }
+
+            // Apply the jetpack force smoothly
+            playerRb.AddForce(Vector3.up * currentJetpackForce, ForceMode.Acceleration);
+            FuelBarP2.P2.UseFuel(0.1f);
+
+            // Clamp the velocity to limit the upward speed
+            playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, maxVerticalVelocity);
+        }
+        else
+        {
+            // Reset the current jetpack force when not using the jetpack
+            currentJetpackForce = 0f;
+        }
     }
 
     private void Sprint()
