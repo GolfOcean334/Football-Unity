@@ -6,17 +6,27 @@ public class scoreRedteam : MonoBehaviour
 {
     public Text scoretext;
     public static int scorecount;
+    public int scorecountMenu;
+
     void Update()
     {
-        scoretext.text = "score: " + Mathf.Round(scorecount);
+        scorecountMenu = scorecount;
+        scoretext.text = "Score: " + Mathf.Round(scorecount);
     }
 
     public void WinRedTeam()
     {
-        if (scorecount >= 1)
+        if (scorecountMenu >= 7)
         {
-            scorecount = 0;
+            PlayerPrefs.SetInt("ScorecountMenuP1", scorecountMenu);
+            PlayerPrefs.Save();
+
             SceneManager.LoadScene("MenuEndGame");
         }
+    }
+
+    public void Reinitialize()
+    {
+        scorecount = 0;
     }
 }

@@ -20,8 +20,6 @@ public class Menu : MonoBehaviour
 #else
         Application.Quit();
 #endif
-
-
     }
 
     public void BackMenu()
