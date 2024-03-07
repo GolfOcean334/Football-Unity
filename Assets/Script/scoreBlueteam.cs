@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class scoreBlueteam : MonoBehaviour
@@ -23,7 +24,7 @@ public class scoreBlueteam : MonoBehaviour
         if (scorecount >= 7)
         {
             scorecount = 0;
-            Debug.Log("Joueur Bleu à gagné !");
+            SceneManager.LoadScene("Menu");
         }
     }
 }
