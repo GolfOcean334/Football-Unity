@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("MenuEndGame");
         }
         float min = Mathf.FloorToInt(countdown / 60);
         float sec = Mathf.FloorToInt(countdown % 60);

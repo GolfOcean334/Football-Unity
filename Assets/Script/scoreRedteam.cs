@@ -13,10 +13,10 @@ public class scoreRedteam : MonoBehaviour
 
     public void WinRedTeam()
     {
-        if (scorecount >= 7)
+        if (scorecount >= 1)
         {
             scorecount = 0;
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("MenuEndGame");
         }
     }
 }

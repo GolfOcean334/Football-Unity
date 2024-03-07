@@ -68,12 +68,14 @@ public class Ball : MonoBehaviour
         rotationP1.RotationBaseP1();
         positionP2.PositionBaseP2(positionP2.positionBaseP2);
         rotationP2.RotationBaseP2();
-
+        
         staminaP1.GetStaminaP1();
         staminaP2.GetStaminaP2();
 
         ballRigidbody.velocity = Vector3.zero;
         ballRigidbody.angularVelocity = Vector3.zero;
+
+        Time.timeScale = 1f;
     }
     private void MakeBallDangerous()
     {

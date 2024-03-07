@@ -16,7 +16,7 @@ public class scoreBlueteam : MonoBehaviour
         if (scorecount >= 7)
         {
             scorecount = 0;
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("MenuEndGame");
         }
     }
 }
