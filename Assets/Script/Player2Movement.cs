@@ -12,6 +12,11 @@ public class Player2Movement : MonoBehaviour
     private float currentJetpackForce = 0f;
     private float maxVerticalVelocity = 5f;
 
+    public Camera playerCam;
+    public float sprintFOV = 65f;
+    public float defaultFOV = 60f;
+    public float fovChangeSpeed = 5f;
+
     public float rotationspeed = 100.0f;
     private float horizontalInput;
     private float forwardInput;
@@ -43,10 +48,15 @@ public class Player2Movement : MonoBehaviour
         {
             StaminaBarPlayer2.P2.UseStamina(0.1f);
             Sprint();
+            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, sprintFOV, Time.deltaTime * fovChangeSpeed);
         }
         else
+        {
             currentSpeed = speed;
+            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, defaultFOV, Time.deltaTime * fovChangeSpeed);
+        }
 
+    
         if (Input.GetKey(KeyCode.RightControl) && FuelBarP2.P2.currentFuel > 1)
         {
             // Increment the jetpack force up to the maximum value
