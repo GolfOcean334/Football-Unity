@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class scoreRedteam : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class scoreRedteam : MonoBehaviour
         {
             scorecount = 0;
             Debug.Log("Joueur Rouge à gagné !");
+
+            SceneManager.LoadScene("Menu");
         }
     }
 }

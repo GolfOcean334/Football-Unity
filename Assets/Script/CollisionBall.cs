@@ -37,6 +37,7 @@ public class Ball : MonoBehaviour
         winRedteam = FindObjectOfType<scoreRedteam>();
         audioSource = GetComponent<AudioSource>();
 
+        // Initialisation de toutes les entitées
         positionBall.PositionBaseBall(positionBall.positionBase);
         rotationBall.RotationBaseBall();
         positionP1.PositionBaseP1(positionP1.positionBaseP1);
