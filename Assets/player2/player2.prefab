@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 5475431774060521368}
   - component: {fileID: 6172945106593780562}
   - component: {fileID: 4833333879214308585}
-  - component: {fileID: 7690439433762131689}
+  - component: {fileID: 28884633688422849}
   m_Layer: 0
   m_Name: player2
   m_TagString: BluePlayer
