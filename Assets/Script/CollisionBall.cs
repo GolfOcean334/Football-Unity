@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -21,6 +22,8 @@ public class Ball : MonoBehaviour
     private bool isBallTouched = false;
 
     public ParticleSystem ballParticles;
+    public ParticleSystem goalRedParticles;
+    public ParticleSystem goalBlueParticles;
 
     void Start()
     {
@@ -36,6 +39,19 @@ public class Ball : MonoBehaviour
         winBlueteam = FindObjectOfType<scoreBlueteam>();
         winRedteam = FindObjectOfType<scoreRedteam>();
         audioSource = GetComponent<AudioSource>();
+        ballParticles = GetComponentInChildren<ParticleSystem>();
+        if (ballParticles != null)
+        {
+            ballParticles.Stop();
+        }
+        if (goalRedParticles != null)
+        {
+            goalRedParticles.Stop();
+        }
+        if (goalBlueParticles != null)
+        {
+            goalBlueParticles.Stop();
+        }
 
         // Initialisation de toutes les entitées
         positionBall.PositionBaseBall(positionBall.positionBase);
@@ -50,12 +66,6 @@ public class Ball : MonoBehaviour
 
         ballRigidbody.velocity = Vector3.zero;
         ballRigidbody.angularVelocity = Vector3.zero;
-
-        ballParticles = GetComponentInChildren<ParticleSystem>();
-        if (ballParticles != null)
-        {
-            ballParticles.Stop();
-        }
     }
 
     private void Update()
@@ -69,11 +79,16 @@ public class Ball : MonoBehaviour
         if (other.gameObject.CompareTag("Bluescored") || other.gameObject.CompareTag("Redscored"))
         {
             if (other.gameObject.CompareTag("Bluescored"))
+            {
                 scoreBlueteam.scorecount += 1;
-                
+                goalRedParticles.Play();
+            }
             else
+            {
                 scoreRedteam.scorecount += 1;
-
+                goalBlueParticles.Play();
+            }
+            
             positionBall.PositionBaseBall(positionBall.positionBase);
             rotationBall.RotationBaseBall();
             positionP1.PositionBaseP1(positionP1.positionBaseP1);
@@ -99,10 +114,7 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isBallTouched = false;
-            if (ballParticles != null)
-            {
-                ballParticles.Stop();
-            }
+            ballParticles.Stop();
         }
 
         if ((collision.gameObject.CompareTag("RedPlayer") || collision.gameObject.CompareTag("BluePlayer")) && !isBallTouched)
@@ -127,21 +139,13 @@ public class Ball : MonoBehaviour
 
             ballRigidbody.AddForce(forceDirection, ForceMode.Impulse);
 
+            //Direction des particules en fonctions de la direction de la frappe du joueur
+            var velocityOverLifetime = ballParticles.velocityOverLifetime;
+            velocityOverLifetime.x = -direction.x;
+            velocityOverLifetime.y = 0;
+            velocityOverLifetime.z = -direction.z;
+            ballParticles.Play();
             isBallTouched = true;
-
-            if (ballParticles != null)
-            {
-                var velocityOverLifetime = ballParticles.velocityOverLifetime;
-                velocityOverLifetime.x = -direction.x;
-                velocityOverLifetime.y = 0;
-                velocityOverLifetime.z = -direction.z;
-
-                ballParticles.Play();
-            }
-
-            isBallTouched = true;
-
-
         }
     }
 }
