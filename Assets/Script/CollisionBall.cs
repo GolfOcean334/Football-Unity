@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
+using System.Collections;
 
 public class Ball : MonoBehaviour
 {
@@ -20,10 +22,14 @@ public class Ball : MonoBehaviour
     private AudioSource audioSource;
 
     private bool isBallTouched = false;
+    private bool dangerousBall = false;
 
     public ParticleSystem ballParticles;
     public ParticleSystem goalRedParticles;
     public ParticleSystem goalBlueParticles;
+
+    public Material normalBallMaterial;
+    public Material dangerousBallMaterial;
 
     void Start()
     {
@@ -53,6 +59,8 @@ public class Ball : MonoBehaviour
             goalBlueParticles.Stop();
         }
 
+        InvokeRepeating("MakeBallDangerous", Random.Range(10f, 20f), Random.Range(10f, 20f));
+
         // Initialisation de toutes les entitées
         positionBall.PositionBaseBall(positionBall.positionBase);
         rotationBall.RotationBaseBall();
@@ -66,6 +74,21 @@ public class Ball : MonoBehaviour
 
         ballRigidbody.velocity = Vector3.zero;
         ballRigidbody.angularVelocity = Vector3.zero;
+    }
+    private void MakeBallDangerous()
+    {
+        dangerousBall = true;
+        GetComponent<Renderer>().material = dangerousBallMaterial;
+
+        StartCoroutine(MakeBallNormalAfterDelay(3f));
+    }
+
+    private IEnumerator MakeBallNormalAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        dangerousBall = false;
+        GetComponent<Renderer>().material = normalBallMaterial;
     }
 
     private void Update()
@@ -117,9 +140,10 @@ public class Ball : MonoBehaviour
             ballParticles.Stop();
         }
 
-        if ((collision.gameObject.CompareTag("RedPlayer") || collision.gameObject.CompareTag("BluePlayer")) && !isBallTouched)
+
+        if ((collision.gameObject.CompareTag("RedPlayer") || collision.gameObject.CompareTag("BluePlayer")) && !isBallTouched && !dangerousBall)
         {
-            float throwForce = 0f;
+            float throwForce = 0.5f;
 
             if (collision.gameObject.CompareTag("RedPlayer"))
             {
@@ -146,6 +170,18 @@ public class Ball : MonoBehaviour
             velocityOverLifetime.z = -direction.z;
             ballParticles.Play();
             isBallTouched = true;
+        }
+
+        else if (collision.gameObject.CompareTag("RedPlayer") && dangerousBall)
+        {
+            positionP1.PositionBaseP1(positionP1.positionBaseP1);
+            rotationP1.RotationBaseP1();
+        }
+
+        else if (collision.gameObject.CompareTag("BluePlayer") && dangerousBall)
+        {
+            positionP2.PositionBaseP2(positionP2.positionBaseP2);
+            rotationP2.RotationBaseP2();
         }
     }
 }

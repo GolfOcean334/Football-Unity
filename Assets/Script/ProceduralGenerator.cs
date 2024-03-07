@@ -18,9 +18,9 @@ public class ProceduralGenerator : MonoBehaviour
 
     void Generate()
     {
-        if (prefab == null || numberOfPrefabInstances <= 0 || parentContainer == null)
+        if (prefab == null || parentContainer == null)
         {
-            Debug.LogError("Prefab, numberOfPrefabInstances, ou parentContainer n'est pas initié correctement.");
+            Debug.LogError("Prefab ou parentContainer n'est pas initié correctement.");
             return;
         }
 
@@ -34,11 +34,7 @@ public class ProceduralGenerator : MonoBehaviour
 
     Vector3 GetRandomPositionInGenerationArea()
     {
-        Vector3 randomPosition = new Vector3(
-           Random.Range(-generationAreaSize.x / 2, generationAreaSize.x / 2),
-           0f,
-           Random.Range(-generationAreaSize.z / 2, generationAreaSize.z / 2)
-       );
+        Vector3 randomPosition = new Vector3(Random.Range(-generationAreaSize.x / 2, generationAreaSize.x / 2), 0f, Random.Range(-generationAreaSize.z / 2, generationAreaSize.z / 2));
         return transform.position + randomPosition;
     }
 

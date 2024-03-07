@@ -6,11 +6,6 @@ public class scoreRedteam : MonoBehaviour
 {
     public Text scoretext;
     public static int scorecount;
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         scoretext.text = "score: " + Mathf.Round(scorecount);
@@ -21,7 +16,6 @@ public class scoreRedteam : MonoBehaviour
         if (scorecount >= 7)
         {
             scorecount = 0;
-            Debug.Log("Joueur Rouge à gagné !");
             SceneManager.LoadScene("Menu");
         }
     }

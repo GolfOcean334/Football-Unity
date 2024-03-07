@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -15,15 +16,17 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (countdown > 0)
+        if (countdown > 1)
         {
             countdown -= Time.deltaTime;
             time_elapsed = initial_value - countdown;
         }
+        else
+        {
+            SceneManager.LoadScene("Menu");
+        }
         float min = Mathf.FloorToInt(countdown / 60);
         float sec = Mathf.FloorToInt(countdown % 60);
-        tex.text = string.Format("{0,00}:{1,00}", min, sec);
-
+        tex.text = string.Format("{0,00}:{1,00}", min, sec);        
     }
-
 }
