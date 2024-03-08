@@ -1472,6 +1472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoretext: {fileID: 1440437690}
+  scorecountMenu: 0
 --- !u!1 &792722296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,6 +1640,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
+        type: 3}
+      propertyPath: useCustomSeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
         type: 3}
@@ -2024,6 +2030,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
+        type: 3}
+      propertyPath: useCustomSeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
         type: 3}
@@ -2705,6 +2716,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
         type: 3}
+      propertyPath: useCustomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
+        type: 3}
       propertyPath: parentContainer
       value: 
       objectReference: {fileID: 355198889}
@@ -3296,6 +3312,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
         type: 3}
+      propertyPath: randomSeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
+        type: 3}
+      propertyPath: useCustomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
+        type: 3}
       propertyPath: parentContainer
       value: 
       objectReference: {fileID: 355198889}
@@ -3656,6 +3682,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
         type: 3}
+      propertyPath: useCustomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
+        type: 3}
       propertyPath: parentContainer
       value: 
       objectReference: {fileID: 355198889}
@@ -3859,6 +3890,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
+        type: 3}
+      propertyPath: useCustomSeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4652688695733358127, guid: 024099a656f3eb34680003e3b2475295,
         type: 3}
@@ -4289,6 +4325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoretext: {fileID: 1426952678}
+  scorecountMenu: 0
 --- !u!1 &1720946688
 GameObject:
   m_ObjectHideFlags: 0

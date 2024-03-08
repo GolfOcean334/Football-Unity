@@ -9,9 +9,23 @@ public class ProceduralGenerator : MonoBehaviour
 
     public float absoluteGroundLevel = 0f;
 
+    public bool useCustomSeed = false;
+    public int customSeed = 0;
+
     void Start()
     {
         transform.position = new Vector3(transform.position.x, absoluteGroundLevel, transform.position.z);
+
+        if (useCustomSeed)
+        {
+            Random.InitState(customSeed);
+        }
+        else
+        {
+            // Génère une seed aléatoire basée sur le temps
+            int randomSeed = (int)System.DateTime.Now.Ticks;
+            Random.InitState(randomSeed);
+        }
 
         Generate();
     }
@@ -42,5 +56,15 @@ public class ProceduralGenerator : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, generationAreaSize);
+    }
+
+    private void CustomSeed()
+    {
+        useCustomSeed = true;
+    }
+
+    private void DontUseCustomSeed()
+    {
+        useCustomSeed = false;
     }
 }
