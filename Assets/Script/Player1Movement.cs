@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class Player1Movement : MonoBehaviour
 {
-    public float speed = 5.0f;
-    public float sprint = 10.0f;
+    [SerializeField] private float speed = 5.0f;
+    [SerializeField] private float sprint = 10.0f;
     public float currentSpeed;
-    public float jumpForce = 250f;
-    public float rotationspeed = 100.0f;
+    [SerializeField] private float jumpForce = 250f;
+    [SerializeField] private float rotationspeed = 100.0f;
 
-    public float jetpackAcceleration = 10f;
-    public float maxJetpackForce = 100f;
+    [SerializeField] private float jetpackAcceleration = 10f;
+    [SerializeField] private float maxJetpackForce = 100f;
     private float currentJetpackForce = 0f;
     private float maxVerticalVelocity = 5f;
 
     public Camera playerCam;
-    public float sprintFOV = 65f;
-    public float defaultFOV = 60f;
-    public float fovChangeSpeed = 5f;
+    [SerializeField] private float sprintFOV = 65f;
+    [SerializeField] private float defaultFOV = 60f;
+    [SerializeField] private float fovChangeSpeed = 5f;
 
     private float horizontalInput;
     private float forwardInput;
